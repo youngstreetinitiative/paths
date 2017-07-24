@@ -8,7 +8,7 @@
 
 fetch_second_drive <- function() {
 
-  system("wmic LOGICALDISK LIST BRIEF", intern = T) %>%
+  second_drive <<- system("wmic LOGICALDISK LIST BRIEF", intern = T) %>%
     as.list() %>%
     map(~str_split(., " ") %>%
           unlist()) %>%
@@ -19,5 +19,5 @@ fetch_second_drive <- function() {
     filter(str_count(DeviceID) == 2) %>%
     filter(str_count(Used) > 1) %>%
     pull(DeviceID) %>%
-    `[[`(2)
+    .[[2]]
 }
