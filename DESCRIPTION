@@ -1,7 +1,9 @@
 Package: paths
 Title: It's a secret
 Version: 0.0.1
-Authors@R: person("Ross", "Ireland", email = "rosseireland@gmail.com", role = c("aut", "cre"))
+Authors@R: as.person(c(
+    "Ross Ireland <rosseireland@gmail.com> [aut]", 
+    "Jackson Whitehair <jackson.whitehair@gmail.com>  [aut, cre]"))
 Description: Soomething
 Depends: R (>= 3.4.0), tidyverse, stringr, glue
 License: MIT
