@@ -7,8 +7,8 @@
 
 DropboxDirFN <- function(DropboxOrigin=NULL){
   if(is.character(DropboxOrigin)){
-    UserDir <<- str_c(str_split(getwd(),"/")[[1]][1:3],collapse="/")
-    DropboxDir <<- as.character(glue("{UserDir}/{DropboxOrigin}"))
+    UserDir <<- str_c(stringr::str_split(getwd(),"/")[[1]][1:3],collapse="/")
+    DropboxDir <<- as.character(glue::glue("{UserDir}/{DropboxOrigin}"))
   }else{message("DropboxOrigin is missing. Please specify the dropbox folder for this project.")}
 }
 
@@ -25,8 +25,8 @@ CSVReadInFN <- function(SourceFolder=NULL,FilesList=NULL){
     if(is.character(SourceFolder)){
       if(is.character(FilesList)){
         for (i in 1:length(FilesList)){
-          assign(str_replace_all(FilesList[i]," ","_"),
-                 read.csv(glue("{DropboxDir}/{SourceFolder}/{FilesList[i]}.csv")),
+          assign(stringr::str_replace_all(FilesList[i]," ","_"),
+                 read.csv(glue::glue("{DropboxDir}/{SourceFolder}/{FilesList[i]}.csv")),
                  envir=.GlobalEnv)
           }
         }else{message("FilesList is not working. Please construct a list of .csv files to read in.")}
