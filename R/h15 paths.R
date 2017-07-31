@@ -10,6 +10,6 @@
 h15_paths <- function(){
   paths::DropboxDirFN("Dropbox (YSI)/YSI Team Folder/Content/R/HILDA Index/")
   paths::fetch_second_drive()
-  index.path <<- glue("{DropboxDir}xwave index.csv")
-  archive.path <<- glue("{DropboxDir}archive/xwave index.csv")
+  index.path <<- glue::glue("{DropboxDir}xwave index.csv")
+  archive.path <<-  glue::glue("{DropboxDir}archive/xwave index.csv")
 }
