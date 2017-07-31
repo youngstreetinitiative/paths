@@ -3,3 +3,5 @@
 export(CSVReadInFN)
 export(DropboxDirFN)
 export(fetch_second_drive)
+export(h15_paths)
+importFrom(magrittr,"%>%")
