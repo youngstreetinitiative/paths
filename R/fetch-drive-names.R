@@ -9,7 +9,7 @@
 
 fetch_second_drive <- function() {
 
-  second.drive <<- system("wmic LOGICALDISK LIST BRIEF", intern = T) %>%
+  second_drive <<- system("wmic LOGICALDISK LIST BRIEF", intern = T) %>%
     as.list() %>%
     purrr::map(~stringr::str_split(., " ") %>%
           unlist()) %>%
