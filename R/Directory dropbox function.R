@@ -7,7 +7,19 @@
 
 DropboxDirFN <- function(DropboxOrigin=NULL){
   if(is.character(DropboxOrigin)){
-    UserDir <<- stringr::str_c(stringr::str_split(getwd(),"/")[[1]][1:3],collapse="/")
+    if(stringr::str_detect(getwd(), "Dropbox")){
+      Pos <- ((getwd() %>%
+                 stringr::str_split("/"))[[1]] %>%
+                stringr::str_detect("Dropbox") %>%
+                which)[1] - 1
+      UserDir <<- (getwd() %>%
+                     stringr::str_split("/"))[[1]][1:Pos] %>%
+        stringr::str_c(collapse = "/")
+    }else{
+    UserDir <<- (getwd() %>%
+                   stringr::str_split("/"))[[1]][1:3] %>%
+                   stringr::str_c(collapse = "/")
+    }
     DropboxDir <<- as.character(glue::glue("{UserDir}/{DropboxOrigin}"))
   }else{message("DropboxOrigin is missing. Please specify the dropbox folder for this project.")}
 }
